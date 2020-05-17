@@ -1,4 +1,4 @@
-package dev.morphia;
+package com.foo;
 
 import dev.morphia.annotations.Entity;
 
