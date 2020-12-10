@@ -12,7 +12,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <morphia.version>1.5.8</morphia.version>
+        <morphia.version>2.1.1</morphia.version>
+        <!-- use this one for version before 2.0 -->
+        <morphia.artifactId>core</morphia.artifactId>
+        <morphia.artifactId>morphia-core</morphia.artifactId>
         <slf4j.version>1.7.25</slf4j.version>
     </properties>
 
@@ -33,7 +36,7 @@
     <dependencies>
         <dependency>
             <groupId>dev.morphia.morphia</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>${morphia.artifactId}</artifactId>
             <version>${morphia.version}</version>
         </dependency>
         <dependency>
@@ -47,11 +50,9 @@
             <version>4.12</version>
         </dependency>
         <dependency>
-            <groupId>dev.morphia.morphia</groupId>
-            <artifactId>core</artifactId>
-            <version>${morphia.version}</version>
-            <classifier>tests</classifier>
-            <scope>test</scope>
+            <groupId>com.antwerkz.bottlerocket</groupId>
+            <artifactId>bottlerocket</artifactId>
+            <version>0.13</version>
         </dependency>
     </dependencies>
 </project>
