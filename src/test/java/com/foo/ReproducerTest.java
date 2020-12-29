@@ -14,7 +14,7 @@ import org.junit.Test;
 public class ReproducerTest extends BottleRocketTest {
     private Datastore datastore;
 
-    ReproducerTest() {
+    public ReproducerTest() {
         MongoClient mongo = getMongoClient();
         MongoDatabase database = getDatabase();
         database.drop();
