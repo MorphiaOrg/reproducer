@@ -16,7 +16,7 @@
         <!-- use this one for version before 2.0 -->
 <!--        <morphia.artifactId>core</morphia.artifactId>-->
         <morphia.artifactId>morphia-core</morphia.artifactId>
-        <slf4j.version>1.7.36</slf4j.version>
+        <slf4j.version>2.0.6</slf4j.version>
     </properties>
 
     <build>
