@@ -9,7 +9,7 @@ import dev.morphia.Datastore;
 import dev.morphia.Morphia;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class ReproducerTest extends BottleRocketTest {
     private Datastore datastore;
