@@ -12,7 +12,7 @@ import dev.morphia.annotations.Id;
 public class MyEntity {
   @Id
   private ObjectId id;
-  private Map<MyEnum, String> values;
+  private Map<ObjectId, String> values;
   private Date updatedOn;
   public MyEntity() {}
 
@@ -24,11 +24,11 @@ public class MyEntity {
     this.id = id;
   }
 
-  public Map<MyEnum, String> getValues() {
+  public Map<ObjectId, String> getValues() {
     return values;
   }
 
-  public void setValues(Map<MyEnum, String> values) {
+  public void setValues(Map<ObjectId, String> values) {
     this.values = values;
   }
 

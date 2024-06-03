@@ -29,22 +29,7 @@ public class ReproducerTest extends BottleRocketTest {
         MongoDatabase database = getDatabase();
         database.drop();
         datastore = Morphia.createDatastore(mongo, getDatabase().getName(), MapperOptions.legacy().build());
-        Conversions.register(MyEnum.class, String.class, MyEnum::getKey);
-        Conversions.register(String.class, MyEnum.class, MyEnumConversionUtility::getFromKey);
         datastore.getMapper().map(MyEntity.class);
-    }
-
-    private static final class MyEnumConversionUtility {
-        public static MyEnum getFromKey(String key) {
-            if (key.equals("first")) {
-                return MyEnum.FIRST;
-            } else if (key.equals("second")) {
-                return MyEnum.SECOND;
-            } else if (key.equals("third")) {
-                return MyEnum.THIRD;
-            }
-            throw new RuntimeException();
-        }
     }
 
     @NotNull
@@ -63,8 +48,8 @@ public class ReproducerTest extends BottleRocketTest {
     public void reproduce() {
         MyEntity entity = new MyEntity();
         entity.setId(ObjectId.get());
-        Map<MyEnum, String> values = new HashMap<>();
-        values.put(MyEnum.FIRST, "first");
+        Map<ObjectId, String> values = new HashMap<>();
+        values.put(ObjectId.get(), "first");
         entity.setValues(values);
         entity.setUpdatedOn(new Date());
         datastore.save(entity);
@@ -73,8 +58,8 @@ public class ReproducerTest extends BottleRocketTest {
             .filter("id", entity.getId())
             .first());
 
-        Map<MyEnum, String> newValues = new HashMap<>();
-        newValues.put(MyEnum.SECOND, "second");
+        Map<ObjectId, String> newValues = new HashMap<>();
+        newValues.put(ObjectId.get(), "second");
 
         UpdateOperations<MyEntity> updateOps = datastore.createUpdateOperations(MyEntity.class)
             .set("values", newValues)
