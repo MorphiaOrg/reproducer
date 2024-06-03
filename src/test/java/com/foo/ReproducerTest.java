@@ -52,7 +52,10 @@ public class ReproducerTest extends BottleRocketTest {
         MyEntity entity = new MyEntity(ObjectId.get(), "otherData", new ListWrapper(new ArrayList<>()));
         datastore.save(entity);
 
-        MyEntity foundEntity = datastore.find(MyEntity.class).filter(Filters.eq("id", entity.getId())).first();
+        MyEntity foundEntity = datastore.find(MyEntity.class).filter(Filters.eq("id", entity.getId()))
+            .filter(Filters.exists("listWrapper"))
+            .first();
+        assert foundEntity != null;
         assert foundEntity.getId().equals(entity.getId());
         // I would assume that this wouldn't be persisted, but I don't think this is happening right now.
         System.out.println(foundEntity);
